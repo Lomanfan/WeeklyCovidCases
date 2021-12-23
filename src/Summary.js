@@ -10,6 +10,7 @@ const Summary = () => {
       .get("https://api.opencovid.ca")
       .then((res) => setData(res.data.summary[0]));
   }, []);
+  console.log("Summary Data", data);
 
   return (
     data && (

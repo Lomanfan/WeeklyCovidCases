@@ -13,10 +13,10 @@ export default function App() {
     <div className="p-4 bg-blue-100 h-screen">
       <div className="flex flex-col bg-white px-8 py-6 max-w-sm mx-auto rounded-lg shadow-lg">
         <h1 className="text-xl font-bold text-center mb-8">
-          This week's covid cases, check, check.
+          This week's covid cases.
         </h1>
         <Summary />
-        <DataForDate date="2021-01-01" />
+        <DataForDate date="2021-01-04" />
       </div>
     </div>
   );

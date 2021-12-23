@@ -10,14 +10,13 @@ const DataForDate = ({ date }) => {
       axios
         .get(`https://api.opencovid.ca/timeseries?date=${date}`)
         .then((res) => setData(res.data.active));
-    console.log(data);
   }, [date]);
+  console.log("DataForDatE Data=", data, "Date=", date);
 
   const provinceRow = (provinceData) => {
     return (
-      <div>
+      <div key={data.indexOf(provinceData)}>
         <Row
-          key={provinceData.province}
           label={provinceData.province}
         >{`${provinceData.active_cases} (${provinceData.active_cases_change})`}</Row>
       </div>
