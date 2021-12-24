@@ -2,16 +2,22 @@ import React, { useState, useEffect } from "react";
 import Row from "./Row";
 import axios from "axios";
 
-const DataForDate = ({ date }) => {
+const DataForDate = ({ startDate, currentDate }) => {
   let [data, setData] = useState(null);
+  let [showDates, setShowDates] = useState(null);
 
   useEffect(() => {
-    date &&
+    currentDate &&
       axios
-        .get(`https://api.opencovid.ca/timeseries?date=${date}`)
-        .then((res) => setData(res.data.active));
-  }, [date]);
-  console.log("DataForDatE Data=", data, "Date=", date);
+        .get(
+          `https://api.opencovid.ca/timeseries?after=${startDate}&before=${currentDate}`
+        )
+        .then((res) => {
+          console.log("res", res.data);
+          setData(res.data.active);
+        });
+  }, [currentDate]);
+  console.log("DataForDatE Data=", data, "Date=", currentDate);
 
   const provinceRow = (provinceData) => {
     return (
@@ -26,7 +32,7 @@ const DataForDate = ({ date }) => {
   return (
     data && (
       <div className="my-2">
-        <h2>{date}</h2>
+        <h2>{currentDate}</h2>
         {data.map((provinceData) => provinceRow(provinceData))}
       </div>
     )
