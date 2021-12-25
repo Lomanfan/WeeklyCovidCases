@@ -9,8 +9,16 @@ import DataForDate from "./DataForDate";
 */
 
 export default function App() {
-  let currentDate = "2021-12-20";
+  let [currentDate, setCurrentDate] = useState(null);
   let [last7Days, setLast7Days] = useState(null);
+
+  useEffect(() => {
+    setCurrentDate(new Date());
+  }, []);
+
+  // let formatted_date = (data) => {
+  //   data.getDate() + "-" + (data.getMonth() + 1) + "-" + data.getFullYear();
+  // };
 
   useEffect(() => {
     let sevenDays = () => {
@@ -20,12 +28,18 @@ export default function App() {
         d.setDate(d.getDate() - i);
         result.push(d);
       }
-      return result.join(",");
+      return result;
     };
     setLast7Days(sevenDays);
   }, [currentDate]);
 
-  console.log(last7Days);
+  last7Days &&
+    console.log(
+      "last7Days",
+      last7Days[0].getDate(),
+      `${last7Days[0].getMonth() + 1}`,
+      last7Days[0].getFullYear()
+    );
 
   return (
     <div className="p-4 bg-blue-100 h-screen">
@@ -34,7 +48,7 @@ export default function App() {
           This week's covid cases.
         </h1>
         <Summary />
-        <DataForDate startDate="2021-12-15" currentDate="2021-12-22" />
+        <DataForDate startDate="15-12-2021" currentDate="22-12-2021" />
       </div>
     </div>
   );

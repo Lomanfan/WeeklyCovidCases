@@ -4,7 +4,7 @@ import axios from "axios";
 
 const DataForDate = ({ startDate, currentDate }) => {
   let [data, setData] = useState(null);
-  let [showDates, setShowDates] = useState(null);
+  // let [showDates, setShowDates] = useState(null);
 
   useEffect(() => {
     currentDate &&
