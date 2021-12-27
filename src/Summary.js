@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Row from "./Row";
-import axios from "axios";
 
-const Summary = () => {
-  let [data, setData] = useState(null);
+const Summary = ({ data }) => {
+  // let [data, setData] = useState(null);
 
-  useEffect(() => {
-    axios
-      .get("https://api.opencovid.ca")
-      .then((res) => setData(res.data.summary[0]));
-  }, []);
-  console.log("Summary Data", data);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://api.opencovid.ca")
+  //     .then((res) => setData(res.data.summary[0]));
+  // }, []);
+  // console.log("Summary Data", data);
 
   return (
     data && (
