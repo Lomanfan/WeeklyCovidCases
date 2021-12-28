@@ -1,25 +1,34 @@
 // import React, { useState, useEffect } from "react";
 
-export default function Last7Days({ data }) {
+export default function Last7Days({ updatedTo }) {
   let date = new Date();
   console.log("AA", date);
   const numOfDays = [1, 2, 3, 4, 5, 6, 7, 8];
 
-  let current8Days = [];
+  let recent8Days = [];
   numOfDays.map((num, i) => {
     if (i > 0) {
       date.setDate(date.getDate() - 1);
     }
-    current8Days.push(
+    recent8Days.push(
       `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
     );
   });
 
-  const currentDate = current8Days[0];
-  const startDate = current8Days[7];
-  // const startDate = {currentDate === data.date ? current8Days[6] : current8Days[7]};
+  const currentDate = recent8Days[0];
+  // console.log("currentDate", typeof(currentDate), "data.date", typeof(data),data.date);
+  // const startDate = recent8Days[7];
 
-  return { current8Days, currentDate, startDate };
+  const startDate = currentDate === updatedTo ? recent8Days[6] : recent8Days[7];
+  // console.log('startDateN', startDate);
+
+  const last7Days =
+    currentDate === updatedTo
+      ? recent8Days.slice(0, 6)
+      : recent8Days.slice(1, 7);
+  console.log("last7Days", last7Days);
+
+  return { last7Days, currentDate, startDate };
   // let result = [];
   // for (let i = 0; i < 7; i++) {
   //   let d = new Date();
