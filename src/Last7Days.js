@@ -25,8 +25,8 @@ export default function Last7Days({ updatedTo }) {
 
   const last7Days =
     currentDate === updatedTo
-      ? recent8Days.slice(0, 6)
-      : recent8Days.slice(1, 7);
+      ? recent8Days.slice(0, 7)
+      : recent8Days.slice(1, 8);
   console.log("last7Days", last7Days);
 
   return { last7Days, currentDate, startDate };
