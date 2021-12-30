@@ -4,7 +4,7 @@ import axios from "axios";
 
 const DataForDate = ({ startDate, currentDate, last7Days }) => {
   let [data, setData] = useState(null);
-  // let [showDates, setShowDates] = useState(null);
+  let [groupedData, setGroupedData] = useState(null);
 
   useEffect(() => {
     currentDate &&
@@ -29,6 +29,21 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
   //   );
   // };
 
+  function groupedBy(data, province) {
+    if (data) {
+      return data.reduce((acc, obj) => {
+        let key = obj[province];
+        if (!acc[key]) {
+          acc[key] = [];
+        }
+        acc[key].push(obj);
+        return acc;
+      }, {});
+    }
+  }
+  const groupedByProvince = groupedBy(data, "province");
+  console.log("goupedBy", groupedByProvince);
+
   return (
     data && (
       <div className="row">
@@ -45,16 +60,13 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
             <div className="col">
               {/* <h2>{currentDate}</h2> */}
               {/* {data.map((provinceData) => provinceRow(provinceData))} */}
-              {data
-                .filter((d) => {
-                  return d.date_active === "25-12-2021";
-                })
-                .map((provinceData) => (
-                  <tr key={data.indexOf(provinceData)}>
-                    {provinceData.province}
-                    <td>{`${provinceData.active_cases} (${provinceData.active_cases_change})`}</td>
-                  </tr>
-                ))}
+              {Object.entries(groupedByProvince).map(([key, value]) => (
+                // {console.log('key', key)}
+                <tr>
+                  <td>{key}</td>
+                  <td></td>
+                </tr>
+              ))}
             </div>
           </tbody>
         </table>

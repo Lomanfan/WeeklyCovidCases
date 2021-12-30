@@ -13,6 +13,7 @@ export default function Last7Days({ updatedTo }) {
     recent8Days.push(
       `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
     );
+    return recent8Days;
   });
 
   const currentDate = recent8Days[0];
