@@ -51,23 +51,24 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
         <table className="table">
           <thead>
             <tr>
+              <th>Province</th>
               {last7Days.map((d) => (
                 <th>{d}</th>
               ))}
             </tr>
           </thead>
           <tbody>
-            <div className="col">
-              {/* <h2>{currentDate}</h2> */}
-              {/* {data.map((provinceData) => provinceRow(provinceData))} */}
-              {Object.entries(groupedByProvince).map(([key, value]) => (
-                // {console.log('key', key)}
-                <tr>
-                  <td>{key}</td>
-                  <td></td>
-                </tr>
-              ))}
-            </div>
+            {/* <h2>{currentDate}</h2> */}
+            {/* {data.map((provinceData) => provinceRow(provinceData))} */}
+            {Object.entries(groupedByProvince).map(([key, value]) => (
+              // {console.log('key', key)}
+              <tr>
+                <td>{key}</td>
+                {value.map((v) => (
+                  <td>{`${v.active_cases} (${v.active_cases_change})`}</td>
+                ))}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
