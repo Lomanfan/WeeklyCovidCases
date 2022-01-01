@@ -1,16 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Row from "./Row";
 
 const Summary = ({ data }) => {
-  // let [data, setData] = useState(null);
-
-  // useEffect(() => {
-  //   axios
-  //     .get("https://api.opencovid.ca")
-  //     .then((res) => setData(res.data.summary[0]));
-  // }, []);
-  // console.log("Summary Data", data);
-
   return (
     data && (
       <div className="md-2">
