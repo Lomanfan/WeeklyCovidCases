@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Row from "./Row";
 import axios from "axios";
 
 const DataForDate = ({ startDate, currentDate, last7Days }) => {
@@ -13,10 +12,10 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
           `https://api.opencovid.ca/timeseries?after=${startDate}&before=${currentDate}`
         )
         .then((res) => {
-          console.log("res", res.data);
+          // console.log("res", res.data);
           setData(res.data.active);
         });
-  }, [currentDate]);
+  }, [startDate, currentDate]);
   console.log("DataForDatE Data=", data, "Date=", currentDate);
 
   function groupedBy(data, province) {
@@ -33,7 +32,7 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
   }
 
   const groupedByProvince = groupedBy(data, "province");
-  // console.log("goupedBy", groupedByProvince);
+  console.log("goupedBy", groupedByProvince);
 
   return (
     data && (
@@ -43,17 +42,19 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
           <thead>
             <tr>
               <th>Province</th>
-              {last7Days.map((d) => (
-                <th>{d}</th>
+              {last7Days.map((date, i) => (
+                <th key={i}>{date}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {Object.entries(groupedByProvince).map(([key, value]) => (
-              <tr>
+              <tr key={key}>
                 <td>{key}</td>
                 {value.map((v) => (
-                  <td>{`${v.active_cases} (${v.active_cases_change})`}</td>
+                  <td
+                    key={groupedByProvince[key].indexOf(v)}
+                  >{`${v.active_cases} (${v.active_cases_change})`}</td>
                 ))}
               </tr>
             ))}
