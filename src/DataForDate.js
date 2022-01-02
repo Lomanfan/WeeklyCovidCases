@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import groupedBy from "./Common/groupedBy";
+import numberWithCommas from "./Common/numberWithCommas";
 import "./styles.css";
 
 const DataForDate = ({ startDate, currentDate, last7Days }) => {
@@ -42,9 +43,9 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
                   <tr key={key}>
                     <td>{key}</td>
                     {value.map((v, i) => (
-                      <td
-                        key={i}
-                      >{`${v.active_cases} (${v.active_cases_change})`}</td>
+                      <td key={i}>{`${numberWithCommas(
+                        v.active_cases
+                      )} (${numberWithCommas(v.active_cases_change)})`}</td>
                     ))}
                   </tr>
                 )
