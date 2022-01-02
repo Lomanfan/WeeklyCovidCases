@@ -8,11 +8,15 @@ export default function Last7Days({ updatedTo }) {
       date.setDate(date.getDate() - 1);
     }
     recent8Days.push(
-      `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
+      `${("0" + date.getDate()).slice(-2)}-${(
+        "0" +
+        (date.getMonth() + 1)
+      ).slice(-2)}-${date.getFullYear()}`
     );
     return recent8Days;
   });
 
+  console.log(recent8Days);
   const currentDate = recent8Days[0];
 
   const startDate = currentDate === updatedTo ? recent8Days[6] : recent8Days[7];
