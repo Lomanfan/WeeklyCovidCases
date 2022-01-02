@@ -36,16 +36,19 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
             </tr>
           </thead>
           <tbody>
-            {Object.entries(groupedByProvince).map(([key, value]) => (
-              <tr key={key}>
-                <td>{key}</td>
-                {value.map((v, i) => (
-                  <td
-                    key={i}
-                  >{`${v.active_cases} (${v.active_cases_change})`}</td>
-                ))}
-              </tr>
-            ))}
+            {Object.entries(groupedByProvince).map(
+              ([key, value]) =>
+                key !== "Repatriated" && (
+                  <tr key={key}>
+                    <td>{key}</td>
+                    {value.map((v, i) => (
+                      <td
+                        key={i}
+                      >{`${v.active_cases} (${v.active_cases_change})`}</td>
+                    ))}
+                  </tr>
+                )
+            )}
           </tbody>
         </table>
       </div>
