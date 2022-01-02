@@ -16,7 +16,7 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
           setData(res.data.active);
         });
   }, [startDate, currentDate]);
-  console.log("DataForDatE Data=", data, "Date=", currentDate);
+  // console.log("DataForDatE Data=", data, "Date=", currentDate);
 
   function groupedBy(data, province) {
     if (data) {
@@ -32,7 +32,7 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
   }
 
   const groupedByProvince = groupedBy(data, "province");
-  console.log("goupedBy", groupedByProvince);
+  // console.log("goupedBy", groupedByProvince);
 
   return (
     data && (
@@ -51,9 +51,9 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
             {Object.entries(groupedByProvince).map(([key, value]) => (
               <tr key={key}>
                 <td>{key}</td>
-                {value.map((v) => (
+                {value.map((v, i) => (
                   <td
-                    key={groupedByProvince[key].indexOf(v)}
+                    key={i}
                   >{`${v.active_cases} (${v.active_cases_change})`}</td>
                 ))}
               </tr>
