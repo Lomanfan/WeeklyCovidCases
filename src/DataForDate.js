@@ -19,7 +19,7 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
           setData(res.data.active);
         });
   }, [startDate, currentDate]);
-  // console.log("DataForDatE Data=", data, "Date=", currentDate);
+  console.log("DataForDatE Data=", data, "Date=", currentDate);
 
   const groupedByProvince = groupedBy(data, "province");
   // console.log("goupedBy", groupedByProvince);
@@ -42,7 +42,7 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
                 key !== "Repatriated" && (
                   <tr key={key}>
                     <td>{key}</td>
-                    {value.map((v, i) => (
+                    {value.reverse().map((v, i) => (
                       <td key={i}>{`${numberWithCommas(
                         v.active_cases
                       )} (${numberWithCommas(v.active_cases_change)})`}</td>
