@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import groupedBy from "./Common/groupedBy";
 
 const DataForDate = ({ startDate, currentDate, last7Days }) => {
   let [data, setData] = useState(null);
@@ -17,19 +18,6 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
         });
   }, [startDate, currentDate]);
   // console.log("DataForDatE Data=", data, "Date=", currentDate);
-
-  function groupedBy(data, province) {
-    if (data) {
-      return data.reduce((acc, obj) => {
-        let key = obj[province];
-        if (!acc[key]) {
-          acc[key] = [];
-        }
-        acc[key].push(obj);
-        return acc;
-      }, {});
-    }
-  }
 
   const groupedByProvince = groupedBy(data, "province");
   // console.log("goupedBy", groupedByProvince);
