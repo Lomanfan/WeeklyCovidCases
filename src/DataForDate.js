@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import groupedBy from "./Common/groupedBy";
+import "./styles.css";
 
 const DataForDate = ({ startDate, currentDate, last7Days }) => {
   let [data, setData] = useState(null);
@@ -25,7 +26,6 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
   return (
     data && (
       <div className="row">
-        <div className="col-3"></div>
         <table className="table">
           <thead>
             <tr>
