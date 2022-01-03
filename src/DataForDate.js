@@ -6,7 +6,6 @@ import "./styles.css";
 
 const DataForDate = ({ startDate, currentDate, last7Days }) => {
   let [data, setData] = useState(null);
-  // let [groupedData, setGroupedData] = useState(null);
 
   useEffect(() => {
     currentDate &&
@@ -32,7 +31,9 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
             <tr>
               <th>Province</th>
               {last7Days.map((date, i) => (
-                <th key={i}>{date}</th>
+                <th key={i} align="center">
+                  {date}
+                </th>
               ))}
             </tr>
           </thead>
@@ -43,7 +44,7 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
                   <tr key={key}>
                     <td>{key}</td>
                     {value.reverse().map((v, i) => (
-                      <td key={i}>{`${numberWithCommas(
+                      <td key={i} align="center">{`${numberWithCommas(
                         v.active_cases
                       )} [${numberWithCommas(v.active_cases_change)}]`}</td>
                     ))}

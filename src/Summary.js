@@ -25,7 +25,7 @@ const Summary = ({ data }) => {
 
   return (
     data && (
-      <div className="md-2">
+      <div>
         <h2 className="text-lg">Last updated on: {data.date}</h2>
         <div className="summary">
           <div>

@@ -1,7 +1,16 @@
+.text-lg {
+  text-align: center;
+}
+
 .summary {
   font-weight: bold;
-  text-align: left;
+  justify-content: center;
   display: flex;
+}
+
+div.row {
+  display: flex;
+  justify-content: center;
 }
 
 .table {
@@ -34,9 +43,4 @@
 
 .table tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
-}
-
-.react-icons {
-  display: inline;
-  /* align-items: left; */
 }

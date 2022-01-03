@@ -1,3 +1,5 @@
+//Old Component; Not in use.
+/*
 import React from "react";
 
 const Row = ({ label, value }) => {
@@ -10,3 +12,4 @@ const Row = ({ label, value }) => {
 };
 
 export default Row;
+*/
