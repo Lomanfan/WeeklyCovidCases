@@ -26,8 +26,8 @@ export default function App() {
 
   return (
     <div className="p-4 bg-blue-100 h-screen">
-      <div className="flex flex-col bg-white px-8 py-6 max-w mx-auto rounded-lg shadow-lg">
-        <h1 className="text-xl font-bold text-center mb-8">
+      <div className="flex flex-col bg-white px-8 py-6 max-w mx-auto shadow-lg">
+        <h1 className="text-xl font-bold text-center mb-5">
           This week's covid cases.
         </h1>
         <Summary data={data} />
