@@ -1,3 +1,3 @@
 ## WeeklyCovidCases
 
-##### Fetch live data and display the most up-to-date information of the last 7 days.
+##### Fetch live data and provide a 7-day overview with the most up-to-date information.
