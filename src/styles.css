@@ -1,3 +1,9 @@
+.summary {
+  font-weight: bold;
+  text-align: left;
+  display: flex;
+}
+
 .table {
   border-collapse: collapse;
   margin: 25px 0;
@@ -28,4 +34,9 @@
 
 .table tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
+}
+
+.react-icons {
+  display: inline;
+  /* align-items: left; */
 }
