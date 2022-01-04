@@ -14,14 +14,11 @@ const DataForDate = ({ startDate, currentDate, last7Days }) => {
           `https://api.opencovid.ca/timeseries?after=${startDate}&before=${currentDate}`
         )
         .then((res) => {
-          // console.log("res", res.data);
           setData(res.data.active);
         });
   }, [startDate, currentDate]);
-  // console.log("DataForDate Data", data, "Current Date", currentDate);
 
   const groupedByProvince = groupedBy(data, "province");
-  // console.log("goupedBy", groupedByProvince);
 
   return (
     data && (

@@ -4,12 +4,6 @@ import DataForDate from "./DataForDate";
 import axios from "axios";
 import Last7Days from "./Last7Days";
 
-/*
-  Use the following API to dynamically display the number of 
-  covid cases by day for the last week
-  https://opencovid.ca/api/
-*/
-
 export default function App() {
   let [data, setData] = useState(null);
   let [updatedTo, setUpdatedTo] = useState(null);
@@ -20,7 +14,6 @@ export default function App() {
       setUpdatedTo(res.data.summary[0].date);
     });
   }, []);
-  // console.log("Summary Data", data);
 
   const { last7Days, currentDate, startDate } = Last7Days({ updatedTo });
 
